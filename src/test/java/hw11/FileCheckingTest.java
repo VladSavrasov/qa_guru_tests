@@ -22,7 +22,7 @@ public class FileCheckingTest {
     ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    void zipTest() throws Exception {
+    void pdfTest() throws Exception {
         try (InputStream inputStream = cl.getResourceAsStream("zip.zip");
              ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
             ZipEntry zipEntry;
@@ -30,20 +30,39 @@ public class FileCheckingTest {
                 if (zipEntry.getName().contains("pdf")) {
                     PDF pdf = new PDF(zipInputStream);
                     assertEquals("Nevrona Designs", pdf.producer);
-                } else if (zipEntry.getName().contains("csv")) {
+                } else System.out.println("wrong file format");
+            }
+        }
+    }
+    @Test
+    void csvTest() throws Exception {
+        try (InputStream inputStream = cl.getResourceAsStream("zip.zip");
+             ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
+            ZipEntry zipEntry;
+            while ((zipEntry = zipInputStream.getNextEntry()) != null) {
+                if (zipEntry.getName().contains("csv")) {
                     CSVReader csv = new CSVReader(new InputStreamReader(zipInputStream));
                     List<String[]> content = csv.readAll();
                     assertEquals(4, content.size());
                     String[] firstRow = content.get(0);
                     assertArrayEquals(new String[]{"Name", "Job Title", "Address", "State", "City"}, firstRow);
-                } else if (zipEntry.getName().contains("xlsx")) {
+                } else System.out.println("wrong file format");
+            }
+        }
+    }
+    @Test
+    void xlsTest() throws Exception {
+        try (InputStream inputStream = cl.getResourceAsStream("zip.zip");
+             ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
+            ZipEntry zipEntry;
+            while ((zipEntry = zipInputStream.getNextEntry()) != null) {
+                 if (zipEntry.getName().contains("xlsx")) {
                     XLS xls = new XLS(zipInputStream);
                     assertEquals("January", xls.excel.getSheetAt(0).getRow(1).getCell(1).toString());
                 } else System.out.println("wrong file format");
             }
         }
     }
-
     @Test
     void jsonTest() throws Exception {
         try (InputStream inputStream = cl.getResourceAsStream("glossary.json");
