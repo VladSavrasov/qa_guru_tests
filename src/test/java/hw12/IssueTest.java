@@ -21,12 +21,12 @@ public class IssueTest extends BaseTest {
     @Link(value = "github", url = "{baseURL}")
     @DisplayName("Проверка Issue в репозитории ")
     public void issueSearchTest() {
-        open(baseURL);
+        open(BASEURL);
         $(".search-input-container").click();
-        $(".QueryBuilder-InputWrapper #query-builder-test").setValue(repo).pressEnter();
-        $(By.linkText(repo)).click();
+        $(".QueryBuilder-InputWrapper #query-builder-test").setValue(REPO).pressEnter();
+        $(By.linkText(REPO)).click();
         $("#issues-tab").click();
-        $(withText(searchText)).should(Condition.exist);
+        $(withText(SEARCHTEXT)).should(Condition.exist);
     }
 
     @Test
@@ -37,12 +37,12 @@ public class IssueTest extends BaseTest {
     @Link(value = "github", url = "{baseURL}")
     @DisplayName("Проверка Issue в репозитории используя лямбду")
     public void issueLambdaSearchTest() {
-        step("открыть главную страницу",() -> open(baseURL));
+        step("открыть главную страницу",() -> open(BASEURL));
         step("найти строку поиска",() ->$(".search-input-container").click());
-        step("перейти на стр с репозиторием",() ->$(".QueryBuilder-InputWrapper #query-builder-test").setValue(repo).pressEnter());
-        step("перейти в репозиторий "+ repo,() ->$(By.linkText(repo)).click());
+        step("перейти на стр с репозиторием",() ->$(".QueryBuilder-InputWrapper #query-builder-test").setValue(REPO).pressEnter());
+        step("перейти в репозиторий "+ REPO,() ->$(By.linkText(REPO)).click());
         step("перейти на страничку issues",() ->$("#issues-tab").click());
-        step("найти страничке "+ searchText ,() ->$(withText(searchText)).should(Condition.exist));
+        step("найти страничке "+ SEARCHTEXT,() ->$(withText(SEARCHTEXT)).should(Condition.exist));
     }
     @Test
     @Feature("Поиск в репозитории")
@@ -53,11 +53,11 @@ public class IssueTest extends BaseTest {
     @DisplayName("Проверка Issue в репозитории с аннотацией @Step")
     public void issueStepsSearchTest() {
         WebSteps webSteps = new WebSteps();
-        webSteps.openStartPage(baseURL);
+        webSteps.openStartPage(BASEURL);
         webSteps.findSearchFild();
-        webSteps.openPageWithRepo(repo);
-        webSteps.openRepoPage(repo);
+        webSteps.openPageWithRepo(REPO);
+        webSteps.openRepoPage(REPO);
         webSteps.openIssuesPage();
-        webSteps.checkSearchTextExist(searchText);
+        webSteps.checkSearchTextExist(SEARCHTEXT);
     }
 }
