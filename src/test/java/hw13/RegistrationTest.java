@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import registrationTest.pages.RegistrationPage;
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 
 
 public class RegistrationTest extends BaseTest {
@@ -18,8 +19,7 @@ public class RegistrationTest extends BaseTest {
     @Tag("Registration")
     @DisplayName("Проверка Practice form используя лямбду")
     void fillFormTest() {
-        open("/automation-practice-form");
-        registrationPage.openPage()
+        step("fill the form",()-> registrationPage.openPage()
                 .setfirstName("Vladius")
                 .setLastName("Vladivikovich")
                 .setEmail("vsvsvs08@rambler.ru")
@@ -31,9 +31,9 @@ public class RegistrationTest extends BaseTest {
                 .setCurrentAddressField("Some text")
                 .setState("uttar")
                 .setCity("ag")
-                .submit();
+                .submit());
 
-        registrationPage.modalformFieldCheck("Student Name","Vladius Vladivikovich")
+        step("Check the form",()->registrationPage.modalformFieldCheck("Student Name","Vladius Vladivikovich")
                 .modalformFieldCheck("Student Email","vsvsvs08@rambler.ru")
                 .modalformFieldCheck("Gender","Male")
                 .modalformFieldCheck("Mobile","8909890099")
@@ -43,7 +43,7 @@ public class RegistrationTest extends BaseTest {
                 .modalformFieldCheck("Picture","photo_5440751325626355282_x.jpg")
                 .modalformFieldCheck("Address","Some text")
                 .modalformFieldCheck("State and City","Uttar Pradesh Agra")
-                .closeModalformField();
+                .closeModalformField());
 
     }
 }
