@@ -1,4 +1,4 @@
-package hw12;
+package hw13;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -10,6 +10,8 @@ public class BaseTest {
     public void baseTest(){
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
+        Configuration.baseUrl = "https://demoqa.com";
         SelenideLogger.addListener("allure",new AllureSelenide());
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 }

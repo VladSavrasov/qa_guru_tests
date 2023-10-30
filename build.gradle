@@ -27,6 +27,11 @@ dependencies {
     testImplementation 'com.codeborne:selenide:6.15.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
 }
+task simple_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("Registration")
+    }
+}
 
 test {
     useJUnitPlatform()
