@@ -8,7 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
-    public static final String remoteUrl = System.getProperty("remoteUrl");
+    public static final String remoteUrl = System.getProperty("remoteUrl","selenoid.autotests.cloud");
     @BeforeEach
     public void baseTest() {
         Configuration.browser = System.getProperty("browser","chrome");
