@@ -28,6 +28,7 @@ dependencies {
     testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
 }
 task registration_test(type: Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform {
         includeTags("Registration")
     }

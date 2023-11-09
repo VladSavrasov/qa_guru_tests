@@ -1,4 +1,4 @@
-package hw13;
+package hw15;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -8,13 +8,16 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
+    public static final String remoteUrl = System.getProperty("remoteUrl");
     @BeforeEach
     public void baseTest() {
-        Configuration.browserSize = "1920x1080";
+        Configuration.browser = System.getProperty("browser","chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion","chrome");
+        Configuration.browserSize = System.getProperty("size","1920x1080");
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
         SelenideLogger.addListener("allure", new AllureSelenide());
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@"+remoteUrl+"/wd/hub";
     }
 
     @AfterEach

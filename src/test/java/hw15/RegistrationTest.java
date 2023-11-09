@@ -1,12 +1,10 @@
-package hw13;
+package hw15;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import registrationTest.pages.RegistrationPage;
-
-import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 
