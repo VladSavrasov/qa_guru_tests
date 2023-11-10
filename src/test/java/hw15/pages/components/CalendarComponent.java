@@ -1,4 +1,4 @@
-package registrationTest.pages.components;
+package hw15.pages.components;
 
 import static com.codeborne.selenide.Selenide.$;
 

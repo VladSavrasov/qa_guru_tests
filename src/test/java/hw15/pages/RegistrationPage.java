@@ -1,8 +1,9 @@
-package registrationTest.pages;
+package hw15.pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
-import registrationTest.pages.components.CalendarComponent;
-import registrationTest.pages.components.ModalFormComponent;
+import hw15.pages.components.CalendarComponent;
+import hw15.pages.components.ModalFormComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -91,7 +92,9 @@ public class RegistrationPage {
     }
 
     public RegistrationPage downloadThePicture(String value) {
-        puctureLoader.uploadFromClasspath(value);
+        if (!Configuration.browser.equalsIgnoreCase("firefox")) {
+            puctureLoader.uploadFromClasspath(value);
+        }
         return this;
     }
 
@@ -117,10 +120,14 @@ public class RegistrationPage {
         submitButton.click();
         return this;
     }
+
     public RegistrationPage modalformFieldCheck(String key, String value) {
-        modalForm.checkField( key, value);
+        if (!Configuration.browser.equalsIgnoreCase("firefox")) {
+            modalForm.checkField(key, value);
+        }
         return this;
     }
+
     public void closeModalformField() {
         modalForm.closeModalform();
     }

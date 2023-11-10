@@ -23,9 +23,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
     testImplementation 'com.codeborne:selenide:6.15.0'
-    testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.24.0'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.9'
 }
 task registration_test(type: Test) {
     systemProperties(System.getProperties())

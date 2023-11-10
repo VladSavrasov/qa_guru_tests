@@ -4,7 +4,8 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import registrationTest.pages.RegistrationPage;
+import hw15.pages.RegistrationPage;
+
 import static io.qameta.allure.Allure.step;
 
 
@@ -28,7 +29,7 @@ public class RegistrationTest extends BaseTest {
                     .setPhoneNumber("8909890099").setDateOfBirth("11", "January", "2002")
                     .setSubjectsField("e")
                     .setHobby("Music")
-                    .downloadThePicture("photo_5440751325626355282_x.jpg")
+                    .downloadThePicture("x.png")
                     .setCurrentAddressField("Some text")
                     .setState("uttar")
                     .setCity("ag")
@@ -43,7 +44,7 @@ public class RegistrationTest extends BaseTest {
                     .modalformFieldCheck("Date of Birth", "11 January,2002")
                     .modalformFieldCheck("Subjects", "English")
                     .modalformFieldCheck("Hobbies", "Music")
-                    .modalformFieldCheck("Picture", "photo_5440751325626355282_x.jpg")
+                    .modalformFieldCheck("Picture", "x.png")
                     .modalformFieldCheck("Address", "Some text")
                     .modalformFieldCheck("State and City", "Uttar Pradesh Agra")
                     .closeModalformField();
