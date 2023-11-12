@@ -28,8 +28,12 @@ dependencies {
     testImplementation 'io.qameta.allure:allure-selenide:2.24.0'
     testImplementation 'org.slf4j:slf4j-simple:2.0.9'
 }
-task registration_test(type: Test) {
+tasks.withType(Test) {
     systemProperties(System.getProperties())
+    useJUnitPlatform()
+}
+
+task registration_test(type: Test) {
     useJUnitPlatform {
         includeTags("Registration")
     }
