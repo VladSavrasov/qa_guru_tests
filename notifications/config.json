@@ -1,0 +1,17 @@
+{
+  "base": {
+    "logo": "",
+    "project": "regidtration.test",
+    "environment": "prod",
+    "comment": "this is prod",
+    "reportLink": "",
+    "language": "en",
+    "allureFolder": "allure-report",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6985877261:AAGkhfc9Fun-fh_K_jdwCAFU9RftT3xS0U0",
+    "chat": "-1002048780671",
+    "replyTo": ""
+  }
+}
